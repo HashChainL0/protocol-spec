@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" role="img" aria-labelledby="t d">
+  <title id="t">Monero atomic swap, happy path</title>
+  <desc id="d">Sequence between the ETH holder, the swap contract on Hash Chain, the Monero network and the XMR holder. ETH is locked, XMR is locked, the ETH is claimed by revealing a secret, and the revealed secret lets the other party sweep the XMR.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c2410c"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="640" rx="20" fill="#f4f5f7" stroke="#d6d9e0"/>
+  <g font-family="'Bricolage Grotesque', Inter, system-ui, sans-serif" fill="#11131a" text-anchor="middle">
+    <!-- lifelines -->
+    <g stroke="#9aa0ad" stroke-width="1.5" stroke-dasharray="5 5">
+      <line x1="130" y1="92" x2="130" y2="610"/>
+      <line x1="390" y1="92" x2="390" y2="610"/>
+      <line x1="640" y1="92" x2="640" y2="610"/>
+      <line x1="880" y1="92" x2="880" y2="610"/>
+    </g>
+    <!-- participants -->
+    <g fill="#2c2c2d">
+      <rect x="40" y="30" width="180" height="56" rx="12"/>
+      <rect x="290" y="30" width="200" height="56" rx="12"/>
+      <rect x="550" y="30" width="180" height="56" rx="12"/>
+      <rect x="790" y="30" width="180" height="56" rx="12"/>
+    </g>
+    <g fill="#ffffff" font-size="16" font-weight="700">
+      <text x="130" y="55">ETH holder</text>
+      <text x="390" y="55">Swap contract</text>
+      <text x="640" y="55">Monero network</text>
+      <text x="880" y="55">XMR holder</text>
+    </g>
+    <g fill="#d6d9e0" font-size="12">
+      <text x="130" y="74">holds secret a</text>
+      <text x="390" y="74">on Hash Chain</text>
+      <text x="640" y="74">joint address</text>
+      <text x="880" y="74">holds secret b</text>
+    </g>
+    <!-- arrows -->
+    <g stroke="#ff6a13" stroke-width="2.2" fill="none" marker-end="url(#arr)">
+      <line x1="130" y1="140" x2="876" y2="140"/>
+      <line x1="130" y1="206" x2="386" y2="206"/>
+      <line x1="880" y1="272" x2="644" y2="272"/>
+      <line x1="640" y1="338" x2="134" y2="338"/>
+      <line x1="130" y1="404" x2="386" y2="404"/>
+      <line x1="880" y1="470" x2="394" y2="470"/>
+      <line x1="390" y1="536" x2="134" y2="536"/>
+      <line x1="130" y1="590" x2="636" y2="590"/>
+    </g>
+    <!-- labels -->
+    <g font-size="14">
+      <text x="505" y="128">1. Agree terms, exchange public points and equality proofs</text>
+      <text x="260" y="194">2. Lock ETH (refund path after T0)</text>
+      <text x="762" y="260">3. Lock XMR to joint address</text>
+      <text x="387" y="326">Confirmations observed by ETH holder</text>
+      <text x="260" y="392">4. Signal ready (claim window opens)</text>
+      <text x="635" y="458">5. Claim ETH by revealing b</text>
+      <text x="262" y="524">6. b is public on Hash Chain</text>
+      <text x="385" y="580">7. Sweep XMR using a and b</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 300" width="1100" height="300" role="img" aria-labelledby="t d">
+  <title id="t">Route lifecycle</title>
+  <desc id="d">Five steps: deposit on the origin chain, enter the shielded pool, transfer privately, request an exit, and receive funds on the destination chain.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c2410c"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1100" height="300" rx="20" fill="#f4f5f7" stroke="#d6d9e0"/>
+  <g font-family="'Bricolage Grotesque', Inter, system-ui, sans-serif" fill="#11131a" text-anchor="middle">
+    <g stroke="#ff6a13" stroke-width="2.5" marker-end="url(#arr)">
+      <line x1="200" y1="150" x2="230" y2="150"/>
+      <line x1="418" y1="150" x2="448" y2="150"/>
+      <line x1="636" y1="150" x2="666" y2="150"/>
+      <line x1="854" y1="150" x2="884" y2="150"/>
+    </g>
+    <g stroke="#11131a" stroke-width="1.5">
+      <rect x="24" y="80" width="174" height="140" rx="14" fill="#ffffff"/>
+      <rect x="236" y="80" width="180" height="140" rx="14" fill="#2c2c2d" stroke="#2c2c2d"/>
+      <rect x="454" y="80" width="180" height="140" rx="14" fill="#2c2c2d" stroke="#2c2c2d"/>
+      <rect x="672" y="80" width="180" height="140" rx="14" fill="#2c2c2d" stroke="#2c2c2d"/>
+      <rect x="890" y="80" width="186" height="140" rx="14" fill="#ffffff"/>
+    </g>
+    <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12">
+      <text x="111" y="108" fill="#c2410c">01 COME IN</text>
+      <text x="326" y="108" fill="#ff6a13">02 SHIELD</text>
+      <text x="544" y="108" fill="#ff6a13">03 TRANSFER</text>
+      <text x="762" y="108" fill="#ff6a13">04 EXIT</text>
+      <text x="983" y="108" fill="#c2410c">05 ARRIVE</text>
+    </g>
+    <g font-size="17" font-weight="700">
+      <text x="111" y="148">Deposit</text>
+      <text x="326" y="148" fill="#ffffff">Shielded note</text>
+      <text x="544" y="148" fill="#ffffff">Private moves</text>
+      <text x="762" y="148" fill="#ffffff">Prove and burn</text>
+      <text x="983" y="148">Receive</text>
+    </g>
+    <g font-size="13" fill="#4a4f5c">
+      <text x="111" y="176">on the origin chain</text>
+      <text x="111" y="196">(public, as today)</text>
+      <text x="326" y="176" fill="#d6d9e0">commitment joins</text>
+      <text x="326" y="196" fill="#d6d9e0">the Merkle tree</text>
+      <text x="544" y="176" fill="#d6d9e0">amounts and parties</text>
+      <text x="544" y="196" fill="#d6d9e0">stay hidden</text>
+      <text x="762" y="176" fill="#d6d9e0">nullifier spends the</text>
+      <text x="762" y="196" fill="#d6d9e0">note, route chosen</text>
+      <text x="983" y="176">on the destination</text>
+      <text x="983" y="196">chain, unlinked</text>
+    </g>
+    <text x="550" y="40" font-size="20" font-weight="700">One lifecycle for every route</text>
+    <text x="550" y="268" font-size="14" fill="#4a4f5c">Only steps 01 and 05 touch public chains. Everything between them happens inside the shielded pool.</text>
+  </g>
+</svg>
