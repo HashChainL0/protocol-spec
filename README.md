@@ -35,6 +35,8 @@ Each document starts with a plain "In short" block, then explains the topic, the
 
 Suggested reading order: Overview, Architecture, then the pillar you care about, then Security and trust.
 
+See the [changelog](CHANGELOG.md) for release history.
+
 ## Diagrams
 
 - [diagrams/hub.svg](diagrams/hub.svg): Hash Chain as the privacy Layer 0
