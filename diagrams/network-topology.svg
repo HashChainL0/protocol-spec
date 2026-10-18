@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" width="1100" height="420" role="img" aria-labelledby="t d">
+  <title id="t">Hash Chain network topology</title>
+  <desc id="d">Wallets build proofs locally and submit updates on account chains. The validator set verifies proofs and finalizes updates into shielded state. Connections link the network to Ethereum, Base, Robinhood Chain and Monero.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c2410c"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1100" height="420" rx="20" fill="#f4f5f7" stroke="#d6d9e0"/>
+  <g font-family="'Bricolage Grotesque', Inter, system-ui, sans-serif" fill="#11131a" text-anchor="middle">
+    <text x="550" y="42" font-size="20" font-weight="700">How the network fits together</text>
+    <g stroke="#ff6a13" stroke-width="2.5" marker-end="url(#arr)">
+      <line x1="228" y1="190" x2="268" y2="190"/>
+      <line x1="466" y1="190" x2="506" y2="190"/>
+      <line x1="724" y1="190" x2="764" y2="190"/>
+    </g>
+    <g stroke="#11131a" stroke-width="1.5">
+      <rect x="40" y="100" width="186" height="180" rx="14" fill="#ffffff"/>
+      <rect x="270" y="100" width="194" height="180" rx="14" fill="#ffffff"/>
+      <rect x="508" y="100" width="214" height="180" rx="14" fill="#2c2c2d" stroke="#2c2c2d"/>
+      <rect x="766" y="100" width="294" height="180" rx="14" fill="#ffffff"/>
+    </g>
+    <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12">
+      <text x="133" y="128" fill="#c2410c">01 WALLET</text>
+      <text x="367" y="128" fill="#c2410c">02 ACCOUNT CHAINS</text>
+      <text x="615" y="128" fill="#ff6a13">03 VALIDATORS</text>
+      <text x="913" y="128" fill="#c2410c">04 CONNECTIONS</text>
+    </g>
+    <g font-size="17" font-weight="700">
+      <text x="133" y="170">Builds the proof</text>
+      <text x="367" y="170">Encrypted updates</text>
+      <text x="615" y="170" fill="#ffffff">Verify and finalize</text>
+      <text x="913" y="170">Doors to other networks</text>
+    </g>
+    <g font-size="13" fill="#4a4f5c">
+      <text x="133" y="200">on the user's device,</text>
+      <text x="133" y="220">keys never leave</text>
+      <text x="367" y="200">one chain per account,</text>
+      <text x="367" y="220">unrelated updates</text>
+      <text x="367" y="240">settle in parallel</text>
+      <text x="615" y="200" fill="#d6d9e0">stake ETH, check proofs,</text>
+      <text x="615" y="220" fill="#d6d9e0">never see amounts</text>
+      <text x="615" y="240" fill="#d6d9e0">or parties</text>
+      <text x="913" y="196">Ethereum, Base, Robinhood:</text>
+      <text x="913" y="216">verified connections.</text>
+      <text x="913" y="236">Monero: atomic swaps.</text>
+    </g>
+    <rect x="270" y="310" width="452" height="56" rx="14" fill="#ffffff" stroke="#11131a" stroke-width="1.5"/>
+    <text x="496" y="334" font-size="16" font-weight="700">Shielded state</text>
+    <text x="496" y="354" font-size="13" fill="#4a4f5c">commitments and nullifiers, no readable balances</text>
+    <g stroke="#9aa0ad" stroke-width="1.5" stroke-dasharray="5 5">
+      <line x1="367" y1="280" x2="367" y2="310"/>
+      <line x1="615" y1="280" x2="615" y2="310"/>
+    </g>
+    <text x="550" y="398" font-size="14" fill="#4a4f5c">Only entry and exit touch public networks. Everything between happens inside Hash Chain.</text>
+  </g>
+</svg>

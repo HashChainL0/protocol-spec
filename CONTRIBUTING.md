@@ -14,7 +14,7 @@ Thanks for reading the spec closely. Hash Chain is at the spec stage, so careful
 1. Fork the repository and create a branch.
 2. Change one topic per pull request.
 3. Explain in the description what changed and why, and link the related issue.
-4. If your change alters a trust assumption, a data structure or a route, update every document that mentions it, including the glossary and FAQ.
+4. If your change alters a trust assumption, a data structure or a connection, update every document that mentions it, including the glossary and FAQ.
 5. A maintainer reviews. Substantive changes may need discussion in the issue before merging.
 
 ## Spec style guide

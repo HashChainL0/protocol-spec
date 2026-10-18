@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-labelledby="t d">
-  <title id="t">Hash Chain as a private hub</title>
-  <desc id="d">Ethereum, Base, Robinhood Chain and Monero each connect to the Hash Chain private hub. Users come in from any chain and leave to any chain.</desc>
+  <title id="t">Hash Chain, the privacy Layer 0</title>
+  <desc id="d">Hash Chain sits at the centre as a Layer 0 network secured by a ring of validators. Ethereum, Base, Robinhood Chain and Monero each connect to it.</desc>
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#c2410c"/>
@@ -8,18 +8,31 @@
   </defs>
   <rect x="0" y="0" width="960" height="560" rx="20" fill="#f4f5f7" stroke="#d6d9e0"/>
   <g font-family="'Bricolage Grotesque', Inter, system-ui, sans-serif" fill="#11131a">
+    <!-- validator ring -->
+    <ellipse cx="480" cy="280" rx="170" ry="100" fill="none" stroke="#9aa0ad" stroke-width="1.5" stroke-dasharray="5 5"/>
+    <g fill="#ff6a13" stroke="#11131a" stroke-width="1.5">
+      <circle cx="480" cy="180" r="7"/>
+      <circle cx="591" cy="204" r="7"/>
+      <circle cx="650" cy="280" r="7"/>
+      <circle cx="591" cy="356" r="7"/>
+      <circle cx="480" cy="380" r="7"/>
+      <circle cx="369" cy="356" r="7"/>
+      <circle cx="310" cy="280" r="7"/>
+      <circle cx="369" cy="204" r="7"/>
+    </g>
+    <text x="480" y="168" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12" fill="#4a4f5c">VALIDATORS STAKE ETH</text>
     <!-- connectors -->
     <g stroke="#ff6a13" stroke-width="2.5" fill="none" marker-start="url(#arr)" marker-end="url(#arr)">
-      <line x1="480" y1="132" x2="480" y2="208"/>
+      <line x1="480" y1="132" x2="480" y2="222"/>
       <line x1="196" y1="280" x2="356" y2="280"/>
       <line x1="604" y1="280" x2="764" y2="280"/>
-      <line x1="480" y1="352" x2="480" y2="428"/>
+      <line x1="480" y1="338" x2="480" y2="428"/>
     </g>
-    <!-- hub -->
-    <rect x="360" y="210" width="240" height="140" rx="18" fill="#2c2c2d"/>
-    <text x="480" y="270" text-anchor="middle" font-size="30" font-weight="700" fill="#ffffff">Hash Chain</text>
-    <text x="480" y="300" text-anchor="middle" font-size="15" fill="#d6d9e0">private hub, L3 on Base</text>
-    <text x="480" y="324" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12" fill="#ff6a13">SHIELDED POOL</text>
+    <!-- core -->
+    <rect x="360" y="222" width="240" height="116" rx="18" fill="#2c2c2d"/>
+    <text x="480" y="276" text-anchor="middle" font-size="30" font-weight="700" fill="#ffffff">Hash Chain</text>
+    <text x="480" y="302" text-anchor="middle" font-size="15" fill="#d6d9e0">the privacy Layer 0</text>
+    <text x="480" y="324" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12" fill="#ff6a13">PRIVATE BY DEFAULT</text>
     <!-- nodes -->
     <g stroke="#11131a" stroke-width="1.5" fill="#ffffff">
       <rect x="380" y="40" width="200" height="90" rx="14"/>
@@ -34,11 +47,11 @@
       <text x="480" y="472">Robinhood Chain</text>
     </g>
     <g text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12" fill="#c2410c">
-      <text x="480" y="106">LIQUIDITY NETWORK</text>
-      <text x="108" y="301">CANONICAL BRIDGE</text>
+      <text x="480" y="106">VERIFIED CONNECTION</text>
+      <text x="108" y="301">VERIFIED CONNECTION</text>
       <text x="852" y="301">ATOMIC SWAP</text>
-      <text x="480" y="496">LIQUIDITY NETWORK</text>
+      <text x="480" y="496">VERIFIED CONNECTION</text>
     </g>
-    <text x="480" y="548" text-anchor="middle" font-size="14" fill="#4a4f5c">Come in from any chain. Go private. Leave to any chain.</text>
+    <text x="480" y="548" text-anchor="middle" font-size="14" fill="#4a4f5c">Go in public. Come out private.</text>
   </g>
 </svg>

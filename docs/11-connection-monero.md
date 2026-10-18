@@ -1,21 +1,21 @@
-# 05 Monero route
+# 11 Monero connection
 
-> Draft. Pre-launch, spec stage. The protocol below is a design sketch, not a final or audited specification. Cryptographic details marked "to be specified" are undecided.
+> Draft. Pre-launch, spec stage. Monero is one of the four connections described in [10](10-connections.md). The protocol below is a design sketch, not a final or audited specification. Cryptographic details marked "to be specified" are undecided.
 
 ## In short
 
-Monero connects to Hash Chain through trustless atomic swaps between XMR and ETH. The ETH side is locked in a swap contract on Hash Chain and the XMR side is locked to an address controlled by a key split between the two parties. By design, no party can end up with both sides, and no custodian ever holds the funds. The costs of failure are mostly delay and the need to stay online, described below.
+Monero connects to Hash Chain through trustless atomic swaps between XMR and ETH. The ETH side lives on Hash Chain itself, locked in a native swap contract (see [05](05-private-swaps.md)) and the XMR side is locked to an address controlled by a key split between the two parties. By design, no party can end up with both sides, and no custodian ever holds the funds. The costs of failure are mostly delay and the need to stay online, described below.
 
 ## Why a swap and not a bridge
 
-Monero has no smart contracts and no native timelocks, so a contract on Hash Chain cannot hold or release XMR. A bridge would need a custodian or a federation to hold XMR. An atomic swap avoids that: two people exchange assets directly, and cryptography makes the exchange all or nothing.
+Monero has no smart contracts and no native timelocks, so nothing on Hash Chain can hold or release XMR. A bridge would need a custodian or a federation to hold XMR. An atomic swap avoids that: two people exchange assets directly, and cryptography makes the exchange all or nothing.
 
 ## Roles
 
 - **ETH holder.** Holds ETH on Hash Chain and wants XMR. Holds secret scalar `a`, public point `A`.
 - **XMR holder.** Holds XMR and wants ETH on Hash Chain. Holds secret scalar `b`, public point `B`.
 
-A user may take either role. The counterparty is a swap participant found through a market mechanism that is to be specified. The counterparty earns a swap fee ([08](08-fees.md)).
+A user may take either role. The counterparty is a swap participant found through a market mechanism that is to be specified (see [05](05-private-swaps.md)). The counterparty earns a swap fee ([12](12-fees.md)).
 
 ![Monero swap sequence](../diagrams/xmr-swap-sequence.svg)
 
@@ -85,7 +85,7 @@ If something stops: the user refunds. Refunding publishes `a` so the counterpart
 2. The counterparty, who holds the ETH, locks it in the swap contract first. The user's wallet verifies the contract state, amounts, `B` and the deadlines.
 3. The user locks XMR to the joint address. The wallet stores `b` safely before this step.
 4. The counterparty confirms the XMR lock and signals ready before `T0`.
-5. The user claims the ETH before `T1`, to a shielded destination on Hash Chain, which publishes `b`.
+5. The user claims the ETH before `T1`, to a private account on Hash Chain, which publishes `b`.
 6. The counterparty reads `b` and sweeps the XMR.
 
 If something stops: if the counterparty refunds, `a` becomes public and the user sweeps the locked XMR back using `a` and `b`. The user must come back online to do so. There is no expiry on the Monero side.
@@ -102,20 +102,20 @@ If something stops: if the counterparty refunds, `a` becomes public and the user
 | After claim | XMR holder offline | Nothing further is needed from them. |
 | ETH holder signals ready on a bad or missing XMR lock | ETH holder error, or XMR holder lies | XMR holder can claim ETH and the ETH holder finds no XMR. This is the main user-side risk. The wallet must verify the lock automatically. |
 | A user loses their secret (`a` or `b`) | Either | The funds that depend on it can become unrecoverable. Wallets must back up the secret before the first lock. |
-| Hash Chain sequencer censors or halts | Infrastructure | Deadlines are measured on Hash Chain time. Forced inclusion via Base is a design goal. A long halt may cause a refund, not a theft. |
+| Validator set halts or censors | Infrastructure | Deadlines are measured on Hash Chain time. A long halt of the validator set may cause a refund, not a theft. See [09](09-security-and-trust.md). |
 | Monero chain reorganization | Infrastructure | Wait for enough confirmations before signalling ready. |
 | Both parties offline | Both | Funds remain in their locked state until someone returns. |
 
 ## Privacy properties
 
 - On Monero, the swap looks like an ordinary transfer to a one-time address. The joint address is not linkable to either party by itself.
-- On Hash Chain, the ETH lock and the claim are visible on the swap contract. For privacy, the lock should be funded from the shielded pool and the claim should pay into the pool. The exact mechanism for funding the lock without linking is to be specified.
+- On Hash Chain, the ETH lock and the claim are visible to the validators that run the swap contract, so the design tries to keep them unlinkable to your account. For privacy, the lock should be funded from a private account and the claim should pay into a private account. The exact mechanism for funding the lock without linking is to be specified.
 - Amounts and timing of the swap leak to the counterparty. Choose counterparties and amounts with that in mind.
 
 ## Technical details
 
 - **Curves.** Monero uses Ed25519. The EVM can verify secp256k1 points cheaply through existing primitives. The design binds one scalar to a point on each curve with a DLEQ-style proof.
-- **Claim check.** The swap contract accepts a claim only if the published scalar matches the committed point `B` on the Hash Chain side.
+- **Claim check.** The swap contract on Hash Chain accepts a claim only if the published scalar matches the committed point `B` on the Hash Chain side.
 - **Refund check.** Likewise for `a` and `A`.
 - **Monero spend.** Once a party knows both `a` and `b`, the joint key is a normal single key. The sweep is a standard Monero transaction.
 - **Confirmation count.** A parameter for the wallet and counterparty, to be specified.
@@ -125,7 +125,7 @@ If something stops: if the counterparty refunds, `a` becomes public and the user
 
 - The exact cross-curve proof and the assurance level needed.
 - Counterparty discovery: an order book, quote requests, or a set of swap providers, and how fees are set.
-- How to fund the ETH lock from shielded notes and claim into shielded notes without leaking a link.
+- How to fund the ETH lock from private accounts and claim into private accounts without leaking a link.
 - Timeout lengths, and how wallets warn users about the need to be online.
 - Whether the signal-ready step can be replaced by something that needs less online presence from the ETH holder.
 - Griefing: how to stop a counterparty from freezing an XMR holder's funds by going silent, for example through a bond, a reputation system, or a design where the XMR holder locks first.

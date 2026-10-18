@@ -6,8 +6,8 @@ Hash Chain is pre-launch. There is no deployed code in this repository, only a s
 
 ## What to report
 
-- A weakness in the design that could break privacy, for example a way to link a deposit to a withdrawal.
-- A weakness that could lead to loss or theft of funds, for example in the swap or relayer designs.
+- A weakness in the design that could break privacy, for example a way to link an entry to an exit.
+- A weakness that could lead to loss or theft of funds, for example in the swap or liquidity network designs.
 - A mistake in a cryptographic assumption or data structure.
 - Any statement in the spec that could mislead users about their risk.
 

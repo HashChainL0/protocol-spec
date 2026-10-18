@@ -1,69 +1,75 @@
 # 01 Architecture
 
-> Draft. Pre-launch, spec stage. Everything here may change.
+> Draft. Pre-launch, spec stage. All of this is a design target, not a description of running software.
 
 ## In short
 
-Hash Chain is built in layers. Ethereum is the base of security, Base sits on top of Ethereum, and Hash Chain sits on top of Base as an L3. Inside Hash Chain, a shielded pool holds private value, and route modules connect it to the outside world.
-
-## Layers
-
-```mermaid
-flowchart TB
-    subgraph L3["Hash Chain (L3)"]
-        POOL["Shielded pool"]
-        ROUTES["Route modules"]
-        SWAP["Swap contracts"]
-    end
-    BASE["Base (L2)"]
-    ETH["Ethereum (L1)"]
-    L3 -->|"settles on"| BASE
-    BASE -->|"secured by"| ETH
-    ROUTES --> POOL
-    SWAP --> POOL
-```
-
-- **Ethereum** provides the ultimate security anchor.
-- **Base** is the settlement layer for Hash Chain. State commitments and data are posted to Base.
-- **Hash Chain** runs execution. Gas is paid in ETH.
+Hash Chain is a network of validators. Each account keeps its own chain of state updates, so unrelated payments settle in parallel. Account contents are encrypted commitments. Validators check zero-knowledge proofs that every update is valid, and never see amounts or parties. Other networks connect through doors verified by the same validator set.
 
 ## Components
 
-**Sequencer.** Orders transactions on Hash Chain and produces blocks. Its trust role is liveness and censorship resistance, not custody. Forced inclusion through Base is a design goal so users can still get a transaction included if the sequencer refuses.
+```mermaid
+flowchart TD
+    W["Wallet / app<br/>(builds proofs locally)"] --> A["Account chains<br/>(encrypted commitments)"]
+    A --> V["Validator set<br/>(verifies proofs, orders, finalizes)"]
+    V --> S["Shielded state<br/>(commitments + nullifiers)"]
+    V --> C["Connections<br/>Ethereum, Base, Robinhood Chain, Monero"]
+```
 
-**Shielded pool.** The core contract set. It stores note commitments in a Merkle tree, tracks spent nullifiers and verifies zero-knowledge proofs. See [06](06-shielded-transfers.md).
+### Own validator network
 
-**Prover and verifier.** Users produce proofs of valid transfers on their own device or through a proving service they choose. The pool contract verifies them on-chain.
+An independent validator set runs the network. Validators stake ETH. Details in [02](02-validators-and-staking.md).
 
-**Route modules.** Contracts and off-chain actors that move value in and out of the pool: the canonical bridge ([03](03-route-base.md)), the liquidity network ([04](04-route-ethereum-robinhood.md)) and the Monero swap contract ([05](05-route-monero.md)).
+### Consensus
 
-**Relayers (solvers).** Independent actors that front funds on a destination chain for fast routes and are repaid via the canonical path.
+A Byzantine fault tolerant protocol, with fast deterministic finality as a design target. Deterministic means a finalized update is final, not probabilistic. The protocol itself is to be specified. The aim is to settle in moments and support payment-scale throughput. No figures are promised.
 
-**Wallet.** Holds the user's spending keys, scans for incoming notes and builds proofs. View keys are derived here ([07](07-view-keys.md)).
+### Account chains
 
-## Lifecycle of a private move
+Each account has its own sequence of state updates, linked in order. Updates from unrelated accounts do not wait for each other, so they can settle in parallel. Only updates that touch shared state, such as a swap between two accounts, need ordering between chains. The content of every update is an encrypted commitment, validated with a zero-knowledge proof.
 
-![Route lifecycle](../diagrams/route-lifecycle.svg)
+### Shielded state
+
+Value is held as private notes. The network stores commitments and spent nullifiers, never the notes themselves. See [03](03-accounts-and-private-transfers.md).
+
+### Proof verification by validators
+
+A user's wallet produces the proof. Validators verify it. A valid proof means: the sender owns the inputs, the totals balance, nothing is spent twice. Validators learn nothing about amounts or parties beyond what the proof makes public.
+
+### Data availability
+
+Where encrypted note payloads and account updates are stored, and who must keep them available, is to be specified. See open questions.
+
+### Connections
+
+Ethereum, Base and Robinhood Chain connect through bridge contracts that the validator set verifies, plus a liquidity network for fast transfers. Monero connects through native atomic swaps. See [10](10-connections.md) and [11](11-connection-monero.md).
+
+## How a private payment moves
 
 ```mermaid
-flowchart LR
-    A["Deposit on origin"] --> B["Commitment added to tree"]
-    B --> C["Private transfers (optional)"]
-    C --> D["Exit request with proof"]
-    D --> E["Nullifier published"]
-    E --> F["Funds released on destination"]
+sequenceDiagram
+    participant S as Sender wallet
+    participant V as Validators
+    participant R as Receiver wallet
+    S->>S: Build update and proof locally
+    S->>V: Submit encrypted update and proof
+    V->>V: Verify proof, check nullifiers
+    V-->>S: Finalized
+    R->>V: Scan for new payloads
+    R->>R: Decrypt notes meant for me
 ```
 
 ## Technical details
 
-- **Data availability.** Transaction data posted to Base lets anyone reconstruct state. Whether encrypted note payloads are posted to Base, kept by Hash Chain nodes, or both is to be specified.
-- **Settlement.** Withdrawals through the canonical bridge follow a challenge window of about seven days. The mechanism that is challenged (fault proofs, validity proofs or a mix) is to be specified.
-- **Gas token.** ETH, bridged from Base.
-- **Contract upgrades.** Proposed to be constrained by a delay long enough for users to exit. Details to be specified.
+- **Finality.** An update is final when a supermajority of staked validators signs it. The threshold and weighting are to be specified.
+- **Ordering.** Per-account order is a hash-linked sequence. Cross-account order is set by validators. The exact data structure is to be specified.
+- **State growth.** Commitments append to a tree and nullifiers to a set. Pruning and archival roles are to be specified.
+- **Client work.** Proof generation happens on the user's device. Proof size and cost depend on the proof system, which is to be specified.
 
 ## Open questions
 
-- Sequencer decentralization path, and whether to run more than one sequencer.
-- Where encrypted note data lives, and the cost trade-off.
-- Whether proving is local only or can be delegated, and what delegation leaks.
-- Exact design of forced inclusion through Base.
+- Consensus protocol choice and validator set size.
+- Data availability design: validator storage, dedicated storage nodes, or another scheme.
+- How cross-account operations such as swaps are ordered without leaking order flow.
+- How light clients verify finality.
+- Upgrade process for the protocol.

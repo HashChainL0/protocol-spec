@@ -7,7 +7,7 @@ labels: question
 
 ## Which document and section?
 
-<!-- Link or name the document, for example docs/05-route-monero.md, "Failure matrix". -->
+<!-- Link or name the document, for example docs/11-connection-monero.md, "Failure matrix". -->
 
 ## Your question
 
