@@ -6,6 +6,8 @@
 
 Hash Chain is the privacy Layer 0: its own network, run by its own validators, where accounts, payments, swaps, assets and apps are private by default. It connects to Ethereum, Base, Robinhood Chain and Monero. You go in public, and you come out private.
 
+![Layered diagram of Hash Chain, the privacy Layer 0](../diagrams/hub.svg)
+
 ## The problem
 
 - Public chains publish everything. Every balance, salary, trade and counterparty is visible forever.

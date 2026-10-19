@@ -4,7 +4,7 @@ Specification for Hash Chain, the privacy Layer 0: its own network with its own 
 
 > **STATUS: pre-launch, spec stage.** Every document here is a draft and may change without notice. Nothing described is deployed or audited. Parameters, mechanisms and names are proposals until marked otherwise. Where a point is undecided, the document says so under "Open questions".
 
-![Hash Chain, the privacy Layer 0](diagrams/hub.svg)
+![Layered diagram of Hash Chain, the privacy Layer 0: validator network, private-by-default layer, product pillars, and connections to Ethereum, Base, Robinhood Chain and Monero](diagrams/hub.svg)
 
 ## What this repository is
 
@@ -39,7 +39,7 @@ See the [changelog](CHANGELOG.md) for release history.
 
 ## Diagrams
 
-- [diagrams/hub.svg](diagrams/hub.svg): Hash Chain as the privacy Layer 0
+- [diagrams/hub.svg](diagrams/hub.svg): the privacy Layer 0 in layers: validators, private by default, pillars and connections
 - [diagrams/network-topology.svg](diagrams/network-topology.svg): validators, account chains, proof verification and connections
 - [diagrams/xmr-swap-sequence.svg](diagrams/xmr-swap-sequence.svg): Monero swap, happy path
 
