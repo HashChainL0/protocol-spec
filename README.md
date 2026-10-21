@@ -2,6 +2,8 @@
 
 Specification for Hash Chain, the privacy Layer 0: its own network with its own validators, where accounts, payments, swaps, assets and apps are private by default, connected to Ethereum, Base, Robinhood Chain and Monero.
 
+> **Version 0.2.0 (draft).**
+>
 > **STATUS: pre-launch, spec stage.** Every document here is a draft and may change without notice. Nothing described is deployed or audited. Parameters, mechanisms and names are proposals until marked otherwise. Where a point is undecided, the document says so under "Open questions".
 
 ![Layered diagram of Hash Chain, the privacy Layer 0: validator network, private-by-default layer, product pillars, and connections to Ethereum, Base, Robinhood Chain and Monero](diagrams/hub.svg)
@@ -24,16 +26,19 @@ Each document starts with a plain "In short" block, then explains the topic, the
 | [05 Private swaps](docs/05-private-swaps.md) | Hidden order flow and front-running resistance |
 | [06 Private assets](docs/06-private-assets.md) | Issuance and transfer rules enforced by proofs |
 | [07 Private apps](docs/07-private-apps.md) | Private contract model and SDK preview |
-| [08 Proofs and view keys](docs/08-proofs-and-view-keys.md) | View keys, credentials and selective disclosure |
+| [08 Proofs and view keys](docs/08-proofs-and-view-keys.md) | Key hierarchy, view keys, credentials and selective disclosure |
 | [09 Security and trust](docs/09-security-and-trust.md) | Trust assumptions and risks, stated plainly |
 | [10 Connections](docs/10-connections.md) | Ethereum, Base and Robinhood Chain, plus the liquidity network |
-| [11 Monero connection](docs/11-connection-monero.md) | Trustless XMR and ETH atomic swaps |
+| [11 Monero connection](docs/11-connection-monero.md) | Trustless XMR and ETH atomic swaps, timelock parameters |
 | [12 Fees](docs/12-fees.md) | What you pay for, in ETH |
 | [13 Roadmap](docs/13-roadmap.md) | Phases, without dates |
+| [14 Threat model](docs/14-threat-model.md) | Adversaries, what each can learn or do, mitigations, out of scope |
 | [Glossary](docs/glossary.md) | Terms used in the spec |
 | [FAQ](docs/faq.md) | Common questions |
 
-Suggested reading order: Overview, Architecture, then the pillar you care about, then Security and trust.
+Suggested reading order: Overview, Architecture, then the pillar you care about, then Security and trust and the Threat model.
+
+The Monero swap timelock calculator and state machine live in [xmr-swap-model](https://github.com/HashChainL0/xmr-swap-model).
 
 See the [changelog](CHANGELOG.md) for release history.
 
