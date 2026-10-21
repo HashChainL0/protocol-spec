@@ -15,7 +15,7 @@ Security needs something at risk. ETH is the asset the connected networks alread
 | Role | Job | Status |
 | --- | --- | --- |
 | Validator | Verify proofs, propose and sign blocks, take part in finality | Design |
-| Connection verifier | Check events on connected networks and sign bridge messages | Design |
+| Connection verifier | Check events on connected networks and sign connection messages | Design |
 | Storage node | Keep data available for wallets to scan and recover notes | To be specified |
 | Liquidity provider | Front funds on destination networks for fast transfers, repaid later. Not a validator | Design |
 

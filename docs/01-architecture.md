@@ -42,7 +42,7 @@ Where encrypted note payloads and account updates are stored, and who must keep 
 
 ### Connections
 
-Ethereum, Base and Robinhood Chain connect through bridge contracts that the validator set verifies, plus a liquidity network for fast transfers. Monero connects through native atomic swaps. See [10](10-connections.md) and [11](11-connection-monero.md).
+Ethereum, Base and Robinhood Chain connect through connection contracts that the validator set verifies, plus a liquidity network for fast transfers. Monero connects through native atomic swaps. See [10](10-connections.md) and [11](11-connection-monero.md).
 
 ## How a private payment moves
 

@@ -18,7 +18,7 @@ It is a privacy-first Layer 0 network: accounts, payments, swaps, assets and app
 Hash Chain is a base network of its own, and other networks plug into it. It does not sit on top of another chain. See [Architecture](01-architecture.md).
 
 **Is Hash Chain a bridge?**
-No. It is its own network with its own validators. Its connections to other networks are bridge contracts and swaps that the network verifies, but the network itself is not a bridge. See [Connections](10-connections.md).
+No. It is its own network with its own validators. Its connections to other networks are connection contracts and swaps that the network verifies, but the network itself is not a bridge. See [Connections](10-connections.md).
 
 **Who secures it?**
 Its own validator set, which stakes ETH. You rely on a supermajority of validators being honest. See [Validators](02-validators-and-staking.md) and [Security and trust](09-security-and-trust.md).
