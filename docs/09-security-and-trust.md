@@ -6,6 +6,8 @@
 
 Hash Chain reduces what you have to trust, but it does not remove all trust. This document lists what you would be relying on and where privacy can fail, so you can decide with open eyes. Contracts and software are unaudited until the audit phase is complete.
 
+For who the design defends against, and what each adversary can and cannot learn or do, see the [threat model](14-threat-model.md).
+
 ## Trust assumptions
 
 | Area | What you rely on | Design response | Status |
@@ -13,7 +15,7 @@ Hash Chain reduces what you have to trust, but it does not remove all trust. Thi
 | Honest supermajority | More than the required fraction of staked validators follow the protocol | ETH stake, slashing, validator diversity | Design |
 | Proof system soundness | The proof system is sound and implemented correctly | Independent review, audits | To be specified |
 | Trusted setup | If the proof system needs a setup ceremony, at least one participant was honest | Choice of system and ceremony design | To be specified |
-| Connection verification | Validators correctly verify events on Ethereum, Base and Robinhood Chain | Stake behind every signature, bridge contract limits | Design |
+| Connection verification | Validators correctly verify events on Ethereum, Base and Robinhood Chain | Stake behind every signature, connection contract limits | Design |
 | Liveness | Validators keep producing blocks and including your updates | Validator diversity, exit paths on connected networks | Design |
 | Liquidity providers | Some provider fills fast transfers | Slower verified path as fallback | Design |
 | Swap timeouts and user presence | You come back online within the deadlines to refund or sweep | Wallet reminders, possible watchtowers | Design |
@@ -34,7 +36,7 @@ Privacy and soundness both depend on the proof system. A soundness bug could all
 
 ## Connection verification
 
-Bridge contracts on Ethereum, Base and Robinhood Chain release funds when the validator set signs a message that matches an event on Hash Chain. The other direction works the same way: validators check an event on the other network before crediting an account. A dishonest supermajority of validators could therefore sign false messages. Mitigations are stake at risk, limits per period, delays for large movements and independent monitoring. See [10](10-connections.md).
+Connection contracts on Ethereum, Base and Robinhood Chain release funds when the validator set signs a message that matches an event on Hash Chain. The other direction works the same way: validators check an event on the other network before crediting an account. A dishonest supermajority of validators could therefore sign false messages. Mitigations are stake at risk, limits per period, delays for large movements and independent monitoring. See [10](10-connections.md).
 
 ## Liveness
 
@@ -68,11 +70,11 @@ flowchart TD
 
 ## Monero swap griefing
 
-In an atomic swap a silent ETH holder can freeze the XMR holder's funds for a time. Funds are not stolen, but they can be stuck without a guaranteed recovery time. This is documented in the failure matrix of [11](11-connection-monero.md) and remains an open problem there.
+In an atomic swap a silent ETH holder can freeze the XMR holder's funds for a time. Funds are not stolen, but they can be stuck without a guaranteed recovery time. This is documented in the failure matrix of [11](11-connection-monero.md) and remains an open problem there, with a bond and a forced refund reveal as candidate mitigations.
 
 ## Smart contract risk
 
-Bridge contracts, swap contracts and issuer contracts are code, and code has bugs. Mitigations are audits, staged rollout and conservative limits. The risk cannot be reduced to zero.
+Connection contracts, swap contracts and issuer contracts are code, and code has bugs. Mitigations are audits, staged rollout and conservative limits. The risk cannot be reduced to zero.
 
 ## Failure modes by component
 
