@@ -24,11 +24,70 @@ A user may take either role. The counterparty is a swap participant found throug
 - **Joint address.** The XMR is locked to an address whose spend key is `A + B`. Neither party can spend alone. Whoever learns both `a` and `b` can spend by themselves with an ordinary Monero transaction. The view key is shared so both can verify the lock.
 - **Adaptor secret.** The ETH claim is bound to the point `B`. Claiming the ETH requires publishing the scalar `b`. That publication is what lets the ETH holder learn `b`, and it is called revealing the adaptor secret.
 - **Equality proof.** Each party proves that the scalar behind its Monero-side point equals the scalar behind its Hash-Chain-side point. This is a cross-curve discrete logarithm equality proof. The exact construction is to be specified.
-- **Timeouts.** Two deadlines on Hash Chain time, `T0` and `T1`, with `T0` earlier than `T1`.
+- **Timeouts.** Two deadlines, `T0` and `T1`, with `T0` earlier than `T1`, both measured in seconds from the moment the ETH lock is finalized on Hash Chain.
   - `T0`: the deadline by which the ETH holder must signal that the XMR lock is confirmed. Without that signal by `T0`, the swap is treated as cancelled and only a refund is possible.
-  - `T1`: the deadline for the XMR holder to claim after the signal. After `T1`, the ETH holder may refund.
+  - `T1`: the deadline for the XMR holder to claim after the signal. After `T1`, the ETH holder may refund. A claim at or after `T1` is rejected, so the ETH holder has a clear moment after which the refund cannot be raced.
 
-Neither deadline is a number here. Their lengths are parameters to be specified, large enough for Monero confirmations and for a user to come back online.
+The lengths are set in the next section.
+
+## Timelock and refund parameters
+
+These values come from the reference calculator in [xmr-swap-model](https://github.com/HashChainL0/xmr-swap-model), which also contains a state machine and checks that a chosen `T0` and `T1` are consistent. Every number is a starting proposal for testing, not a measured or final value. This section addresses issue #5.
+
+### Inputs
+
+| Parameter | Proposed value | Reason |
+| --- | --- | --- |
+| Monero block time | 120 s target | Monero's target block interval |
+| Block time variance factor | 2 | Monero blocks arrive at random, so n blocks often take longer than n times 120 s. Planning uses 240 s per block |
+| Monero lock before spendable | 10 blocks | Monero outputs cannot be spent until 10 blocks old |
+| Confirmations before "ready" | 10 | Never fewer than the lock above. Reorgs deeper than this are not expected on Monero. Larger swaps may require more |
+| Counterparty lock allowance | 3600 s | Time for the XMR holder to see the ETH lock, check terms and broadcast the XMR lock |
+| ETH holder online margin | 14400 s (4 h) | Slack for an ETH holder who is briefly offline before `T0` |
+| XMR holder online margin | 21600 s (6 h) | Slack for an XMR holder who is briefly offline after ready |
+| Claim inclusion | 20 blocks of 12 s | Allowance for the claim transaction to be included on Hash Chain. 12 s is a placeholder block time used for alignment only |
+| Hash Chain finality | Deterministic, no extra wait | A lock counts once finalized, so no reorg allowance is added on the contract side |
+
+### Resulting deadlines
+
+| Quantity | Formula | Value |
+| --- | --- | --- |
+| Confirmation wait | 10 blocks x 120 s x 2 | 2400 s |
+| `T0` | 3600 + 2400 + 14400 | 20400 s (5 h 40 min) |
+| Claim window (`T1` minus `T0`) | 21600 + 20 x 12 | 21840 s (6 h 4 min) |
+| `T1` | 20400 + 21840 | 42240 s (11 h 44 min) |
+
+Consistency rules the calculator checks: `T1` is later than `T0`; `T0` covers the lock allowance and the confirmation wait; confirmations are at least the Monero unlock period; `T1` covers the expected unlock time; the claim window covers the XMR holder margin plus inclusion; both deadlines align to block boundaries.
+
+Choosing longer margins makes failed swaps slower to resolve but makes it more likely a user who was briefly offline still completes. Shorter margins do the opposite. These are wallet-visible trade-offs, and wallets should show the worst-case time before the user commits.
+
+### Who must be online, and when
+
+| Phase | ETH holder | XMR holder |
+| --- | --- | --- |
+| Agree terms and exchange proofs | Online | Online |
+| ETH locked, waiting for XMR lock | Not required. Refund is possible at any time | Online within the lock allowance (about 1 h) |
+| XMR locked, confirmations accumulating | Must be online at some point before `T0` to signal ready, ideally right after 10 confirmations | Not required |
+| Ready signalled, before `T1` | Not required | Must claim before `T1`, so must check in at least once in the claim window |
+| After claim | Must come back once to sweep, no deadline on Monero | Nothing further |
+| After refund | Nothing further | Must come back once to sweep XMR with `a` and `b`, no deadline on Monero |
+
+Neither party is ever required to stay online continuously. The strictest requirement is one check-in per window. Wallets should persist swap state and secrets, and warn before the first lock.
+
+### Griefing and its limits
+
+Two griefing cases matter.
+
+1. **ETH holder locks, XMR holder never locks.** The ETH holder refunds at any time. Cost: network fees and a short delay. The XMR holder lost nothing.
+2. **Both locked, ETH holder goes silent.** The XMR holder cannot recover until the ETH holder acts, because recovery needs `a`, which only appears when the ETH holder refunds. Funds are not stolen, but they are frozen with no guaranteed end. The attacker also keeps their own ETH locked and gains nothing, so this is a nuisance attack, but it is a real cost to the victim.
+
+Proposed mitigations, none yet decided:
+
+- **Bond.** The ETH holder posts a small ETH bond with the lock. If the swap reaches the XMR lock and the ETH holder then neither signals ready by `T0` nor refunds within a grace period, the bond goes to the XMR holder. The bond is sized to at least the XMR holder's opportunity cost over the maximum freeze plus fees.
+- **Forced refund reveal.** The ETH holder commits to `a` encrypted to the validator set at lock time, with a proof that the ciphertext is correct. If no ready signal arrives by `T0`, the validator set can release `a` to the XMR holder. Releasing `a` alone is harmless, since spending also needs `b`, which only the XMR holder knows. The trust cost is that a dishonest majority could release `a` early, which would help a colluding XMR holder and so adds one more reason a dishonest majority is out of the safe model (see [14](14-threat-model.md)).
+- **Reputation and limits.** Per-counterparty size limits that grow with completed swaps, as a weaker complement.
+
+The bond is the simpler option and does not add validator trust. The forced reveal removes the freeze entirely. Both can be combined. See [09](09-security-and-trust.md) for how this appears in the wider risk list.
 
 ## Contract states
 
@@ -46,7 +105,7 @@ Rules in words:
 1. In `Funded`, the ETH holder may refund at any time. Refunding publishes `a`.
 2. In `Funded`, the ETH holder may signal ready, only before `T0`.
 3. In `Ready`, only the XMR holder may claim, until `T1`. Claiming publishes `b`.
-4. In `Ready`, after `T1`, the ETH holder may refund. If the XMR holder has not yet claimed, whichever valid action reaches the contract first wins.
+4. In `Ready`, at or after `T1`, claims are rejected and the ETH holder may refund. A claim that was included before `T1` stands.
 5. `Claimed` and `Refunded` are final.
 
 ## Happy path
@@ -96,7 +155,7 @@ If something stops: if the counterparty refunds, `a` becomes public and the user
 | --- | --- | --- |
 | Terms agreed, before any lock | Either | Nothing at stake. Swap does not start. |
 | After ETH lock, XMR never locked | XMR holder disappears | ETH holder refunds and publishes `a`. No loss. |
-| After both locks, before ready | ETH holder offline | ETH and XMR stay locked and nobody can steal either. When the ETH holder returns, they either signal ready before `T0` or refund. After `T0` only refund is possible, and the XMR holder recovers by sweeping with `a` and `b`. Until the ETH holder acts, the XMR holder has no way to recover and no guaranteed recovery time. A deliberately absent ETH holder can therefore freeze the XMR holder's funds (a griefing risk, see open questions). |
+| After both locks, before ready | ETH holder offline | ETH and XMR stay locked and nobody can steal either. When the ETH holder returns, they either signal ready before `T0` or refund. After `T0` only refund is possible, and the XMR holder recovers by sweeping with `a` and `b`. Until the ETH holder acts, the XMR holder has no way to recover and no guaranteed recovery time. A deliberately absent ETH holder can therefore freeze the XMR holder's funds (a griefing risk, see the griefing section above). |
 | After ready, before claim | XMR holder offline | After `T1` the ETH holder refunds. XMR holder later sweeps their XMR back using `a` and `b`. Swap fails, no loss. |
 | After ready, XMR holder claims | ETH holder offline | Claim publishes `b`. ETH holder sweeps whenever they return, using stored `a`. No deadline on Monero. |
 | After claim | XMR holder offline | Nothing further is needed from them. |
@@ -118,7 +177,7 @@ If something stops: if the counterparty refunds, `a` becomes public and the user
 - **Claim check.** The swap contract on Hash Chain accepts a claim only if the published scalar matches the committed point `B` on the Hash Chain side.
 - **Refund check.** Likewise for `a` and `A`.
 - **Monero spend.** Once a party knows both `a` and `b`, the joint key is a normal single key. The sweep is a standard Monero transaction.
-- **Confirmation count.** A parameter for the wallet and counterparty, to be specified.
+- **Confirmation count.** Ten by default, agreed between the parties as part of the terms and never below the Monero unlock period. See the parameter table.
 - **Persistence.** Wallets must persist swap state and secrets so that a crashed client can resume or refund.
 
 ## Open questions
@@ -126,7 +185,9 @@ If something stops: if the counterparty refunds, `a` becomes public and the user
 - The exact cross-curve proof and the assurance level needed.
 - Counterparty discovery: an order book, quote requests, or a set of swap providers, and how fees are set.
 - How to fund the ETH lock from private accounts and claim into private accounts without leaking a link.
-- Timeout lengths, and how wallets warn users about the need to be online.
+- Measured values: the table above is a proposal. Real Monero block time behavior, Hash Chain block time and wallet reaction time need testing before the numbers are fixed.
+- How wallets warn users about the need to be online.
 - Whether the signal-ready step can be replaced by something that needs less online presence from the ETH holder.
-- Griefing: how to stop a counterparty from freezing an XMR holder's funds by going silent, for example through a bond, a reputation system, or a design where the XMR holder locks first.
+- Griefing: choosing between the bond, the forced refund reveal, or both, and sizing the bond.
+- Whether the Monero lock confirmation count should scale with swap size.
 - Watchtowers: whether an optional service can submit refunds or sweeps on behalf of an offline user without learning secrets.

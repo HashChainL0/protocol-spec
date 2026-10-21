@@ -48,7 +48,7 @@
     <!-- labels -->
     <g font-size="14">
       <text x="505" y="128">1. Agree terms, exchange public points and equality proofs</text>
-      <text x="260" y="194">2. Lock ETH (refund path after T0)</text>
+      <text x="260" y="194">2. Lock ETH (T0 and T1 start)</text>
       <text x="762" y="260">3. Lock XMR to joint address</text>
       <text x="387" y="326">Confirmations observed by ETH holder</text>
       <text x="260" y="392">4. Signal ready (claim window opens)</text>

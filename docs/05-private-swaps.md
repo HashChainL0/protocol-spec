@@ -43,7 +43,7 @@ None of these is chosen.
 
 ## Monero swaps
 
-Native atomic swaps with Monero are described in [11](11-connection-monero.md). Counterparty discovery for those swaps reuses this layer where possible.
+Native atomic swaps with Monero are described in [11](11-connection-monero.md). Counterparty discovery for those swaps reuses this layer where possible. Deadlines, confirmation counts, online requirements and griefing mitigations for those swaps are in [11](11-connection-monero.md), including a parameter table taken from the reference calculator at https://github.com/HashChainL0/xmr-swap-model.
 
 ## Technical details
 
