@@ -40,6 +40,17 @@ Open design questions are worked through in the [research notes](research/README
 
 Suggested reading order: Overview, Architecture, then the pillar you care about, then Security and trust and the Threat model.
 
+### Where to start
+
+| If you are | Start with | Then |
+| --- | --- | --- |
+| New to Hash Chain | [00 Overview](docs/00-overview.md) and the [FAQ](docs/faq.md) | [Glossary](docs/glossary.md) for unfamiliar terms |
+| A user who wants to know what you would be trusting | [09 Security and trust](docs/09-security-and-trust.md) | [14 Threat model](docs/14-threat-model.md) |
+| A wallet or app builder | [03 Accounts and private transfers](docs/03-accounts-and-private-transfers.md) | [04 Private payments](docs/04-private-payments.md), [07 Private apps](docs/07-private-apps.md) |
+| Looking at Ethereum, Base, Robinhood Chain or Monero connections | [10 Connections](docs/10-connections.md) | [11 Monero connection](docs/11-connection-monero.md) |
+| A validator candidate | [02 Validators and staking](docs/02-validators-and-staking.md) | [Research note 01](research/01-stake-and-slashing.md) |
+| A reviewer looking for mistakes | [01 Architecture](docs/01-architecture.md) | [Research notes](research/README.md) and [open HIPs](https://github.com/HashChainL0/hips) |
+
 The Monero swap timelock calculator and state machine live in [xmr-swap-model](https://github.com/HashChainL0/xmr-swap-model).
 
 See the [changelog](CHANGELOG.md) for release history.

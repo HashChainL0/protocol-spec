@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- "Where to start" table in the README that points each kind of reader to the right documents.
 - Research notes in [research/](research/README.md), one per open research issue. Each compares prior art, states tradeoffs and gives a proposed direction that is not final:
   - [01 Stake and slashing](research/01-stake-and-slashing.md): bonded, beacon-chain and restaked ETH, and which faults to slash. Addresses #1.
   - [02 Consensus and finality](research/02-consensus-and-finality.md): leader-based, pipelined and DAG-based BFT, and the shared shielded state. Addresses #2.
