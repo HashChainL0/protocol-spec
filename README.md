@@ -36,6 +36,8 @@ Each document starts with a plain "In short" block, then explains the topic, the
 | [Glossary](docs/glossary.md) | Terms used in the spec |
 | [FAQ](docs/faq.md) | Common questions |
 
+Open design questions are worked through in the [research notes](research/README.md): stake and slashing, consensus and finality, the proof system, connection verification, and fees.
+
 Suggested reading order: Overview, Architecture, then the pillar you care about, then Security and trust and the Threat model.
 
 The Monero swap timelock calculator and state machine live in [xmr-swap-model](https://github.com/HashChainL0/xmr-swap-model).
