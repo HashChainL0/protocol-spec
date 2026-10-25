@@ -4,6 +4,18 @@ All notable changes to this specification are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions describe the state of the draft, not a deployed protocol.
 
+## [Unreleased]
+
+### Added
+
+- Research notes in [research/](research/README.md), one per open research issue. Each compares prior art, states tradeoffs and gives a proposed direction that is not final:
+  - [01 Stake and slashing](research/01-stake-and-slashing.md): bonded, beacon-chain and restaked ETH, and which faults to slash. Addresses #1.
+  - [02 Consensus and finality](research/02-consensus-and-finality.md): leader-based, pipelined and DAG-based BFT, and the shared shielded state. Addresses #2.
+  - [03 Proof system](research/03-proof-system.md): Groth16, PLONK, Halo 2 and STARKs, setup model and a device measurement plan. Addresses #3.
+  - [06 Connection verification](research/06-connection-verification.md): event proofs for Ethereum, Base and Robinhood Chain, safety limits and an escape path. Addresses #6.
+  - [07 Fees and fee privacy](research/07-fees-and-fee-privacy.md): fee payment patterns and shielded fee payment. Addresses #7.
+- Link to the research notes from the README.
+
 ## [0.2.0] - 2026-10-21
 
 ### Added
