@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - [06 Connection verification](research/06-connection-verification.md): event proofs for Ethereum, Base and Robinhood Chain, safety limits and an escape path. Addresses #6.
   - [07 Fees and fee privacy](research/07-fees-and-fee-privacy.md): fee payment patterns and shielded fee payment. Addresses #7.
 - Link to the research notes from the README.
+- Glossary entries: Ethereum, Monero, Robinhood Chain and shape class.
 
 ## [0.2.0] - 2026-10-21
 

@@ -38,6 +38,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 
 **ETH holder.** In a Monero swap, the party who locks ETH on Hash Chain and wants XMR. See [11](11-connection-monero.md).
 
+**Ethereum.** A network that connects to Hash Chain, alongside Base, Robinhood Chain and Monero. See [10](10-connections.md).
+
 **Finality.** The point at which an update can no longer be reversed. Hash Chain targets fast, deterministic finality.
 
 **Griefing.** Behavior that costs another party time or locked funds without the attacker gaining the funds.
@@ -56,6 +58,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 
 **Merkle tree.** A tree of hashes that lets the network prove a commitment is included while storing only a short root.
 
+**Monero.** A privacy-focused network with no smart contracts. It connects to Hash Chain through atomic swaps instead of a connection contract. See [11](11-connection-monero.md).
+
 **Note.** A private unit of value held by an account.
 
 **Nullifier.** A one-time value published when a note is spent. Prevents double spends without revealing which note was spent.
@@ -69,6 +73,10 @@ Plain definitions of terms used in the spec, in alphabetical order.
 **Receiving key.** A long-lived public key a receiver publishes so senders can derive stealth addresses. See [03](03-accounts-and-private-transfers.md).
 
 **Revocation.** Ending the usefulness of a view key or credential for future use. It cannot undo what was already seen.
+
+**Robinhood Chain.** A network that connects to Hash Chain, alongside Ethereum, Base and Monero. ETH first, tokenized assets later. See [10](10-connections.md).
+
+**Shape class.** A coarse category of update, by its size and structure. In the proposed direction for private fees, the fee depends only on the shape class and the epoch, so the fee field reveals the shape class and nothing else. Proposed, not decided. See [research note 07](../research/07-fees-and-fee-privacy.md).
 
 **Shielded.** Held privately on Hash Chain. A shielded account and a private account are the same thing.
 
