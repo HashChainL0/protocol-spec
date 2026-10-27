@@ -89,6 +89,19 @@ Proposed mitigations, none yet decided:
 
 The bond is the simpler option and does not add validator trust. The forced reveal removes the freeze entirely. Both can be combined. See [09](09-security-and-trust.md) for how this appears in the wider risk list.
 
+## Corridors (proposed)
+
+> Proposed, not decided. The proposal is written up as [HIP-5](https://github.com/HashChainL0/hips/blob/main/hips/hip-0005.md), which is a Draft.
+
+The parameters above depend on the network that runs the ETH side: its block time, how many blocks a claim needs to be included, how quickly a watcher sees an event, and whether a data posting fee counts against a gas limit. The proposal reads the ETH and XMR swap as a set of corridors, one per connected network, in this proposed order: Robinhood Chain, Base, Ethereum.
+
+- **Direct.** A corridor holds the whole swap on its own network. A swap never routes through a second network and has no bridging step, so one set of `T0` and `T1` applies and deadlines are never a sum over two networks.
+- **Shared.** The state machine, the roles, the claim safety rule and the Monero side inputs are the same in every corridor.
+- **Per corridor.** Block time, claim inclusion blocks, detection latency and the data posting component are chosen per corridor, from measurement.
+- **No dates.** Opening a corridor depends on measured inputs and review. The order says nothing about when, and does not change the [roadmap](13-roadmap.md).
+
+The reference model has the three corridors as plain data with illustrative numbers, see [CORRIDORS.md](https://github.com/HashChainL0/xmr-swap-model/blob/main/docs/CORRIDORS.md). This section sits next to the text above, which puts the ETH side on Hash Chain itself. How the two fit is an open question below.
+
 ## Contract states
 
 ```mermaid
@@ -191,3 +204,4 @@ If something stops: if the counterparty refunds, `a` becomes public and the user
 - Griefing: choosing between the bond, the forced refund reveal, or both, and sizing the bond.
 - Whether the Monero lock confirmation count should scale with swap size.
 - Watchtowers: whether an optional service can submit refunds or sweeps on behalf of an offline user without learning secrets.
+- Corridors: whether the swap contract runs on each connected network or only on Hash Chain, and how a corridor's measured inputs enter the parameter table. See HIP-5.

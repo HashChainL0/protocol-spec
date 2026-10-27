@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - [07 Fees and fee privacy](research/07-fees-and-fee-privacy.md): fee payment patterns and shielded fee payment. Addresses #7.
 - Link to the research notes from the README.
 - Glossary entries: Ethereum, Monero, Robinhood Chain and shape class.
+- Proposed corridors section in [11](docs/11-connection-monero.md): direct ETH and XMR swaps per connected network, in the proposed order Robinhood Chain, Base, Ethereum, with no bridging step and no dates. Marked as a proposal, with the open question of how it fits the swap contract placement.
 
 ## [0.2.0] - 2026-10-21
 
