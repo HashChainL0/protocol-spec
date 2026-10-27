@@ -44,11 +44,17 @@ By design, no. A provider can refuse or be slow, but the recipient and amount ar
 **Do I trust a custodian for Monero swaps?**
 No. The swap uses adaptor signatures and timeouts. You do need to stay reachable within the deadlines. See [11](11-connection-monero.md).
 
+**Does a Monero swap ever pass through another network?**
+Not in the proposed design. A swap is a direct corridor on one connected network, in the proposed order Robinhood Chain, Base, Ethereum. There is no bridging step inside a swap, and its deadlines are never added up over two networks. This is a proposal, not a decision, and no corridor has a date. See [11](11-connection-monero.md) and [HIP-5](https://github.com/HashChainL0/hips/blob/main/hips/hip-0005.md).
+
 **What happens if I go offline during a swap?**
 Depending on when, you may need to come back to refund or sweep. Funds are not meant to be stolen, but they can be frozen for a time. The failure matrix lists each case. See [11](11-connection-monero.md).
 
 **Can I prove my history to an accountant?**
 Yes, with a view key. You choose the scope and can revoke it. Revocation stops future visibility, and data already viewed cannot be unseen. You can also prove single facts with credentials. See [08](08-proofs-and-view-keys.md).
+
+**How are changes to the design decided?**
+Changes are proposed as HIPs, short documents in a public repository that describe one change and record the objections. A Draft HIP is a proposal and not a decision. See the [hips repository](https://github.com/HashChainL0/hips).
 
 **Is this for hiding illegal activity?**
 No. The goal is ordinary financial privacy with the option of scoped disclosure. Private, not shady.
