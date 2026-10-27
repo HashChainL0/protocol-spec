@@ -26,6 +26,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 
 **Connection verifier.** A validator role that checks events on connected networks and signs messages about them. See [02](02-validators-and-staking.md).
 
+**Corridor.** In the proposal for ETH and Monero swaps, one connected network read as a direct swap route: Robinhood Chain, Base or Ethereum. A corridor holds the whole swap on its own network and never routes through another one. Proposed, not decided. See [11](11-connection-monero.md).
+
 **Counterparty.** The other party in a swap.
 
 **Credential.** A signed statement from an issuer about an account, used privately inside proofs to show one fact. See [08](08-proofs-and-view-keys.md).
@@ -45,6 +47,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 **Griefing.** Behavior that costs another party time or locked funds without the attacker gaining the funds.
 
 **Hash Chain.** The privacy Layer 0 described in this spec: its own network with its own validators.
+
+**HIP.** A Hash Chain Improvement Proposal, a short design document that proposes one change and records the objections. HIPs are proposals until they are Final. See the [hips repository](https://github.com/HashChainL0/hips).
 
 **Issuer.** The party that signs a credential about an account. See [08](08-proofs-and-view-keys.md).
 
