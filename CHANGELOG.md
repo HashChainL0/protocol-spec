@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Glossary entries: Ethereum, Monero, Robinhood Chain and shape class.
 - FAQ entries on direct corridors for Monero swaps and on how changes are proposed through HIPs.
 - Glossary entries: corridor and HIP.
+- Glossary entries: asset identifier, batch payout, disclosure level, memo and payment link.
 - Proposed corridors section in [11](docs/11-connection-monero.md): direct ETH and XMR swaps per connected network, in the proposed order Robinhood Chain, Base, Ethereum, with no bridging step and no dates. Marked as a proposal, with the open question of how it fits the swap contract placement.
 
 ## [0.2.0] - 2026-10-21

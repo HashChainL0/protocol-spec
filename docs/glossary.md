@@ -14,9 +14,13 @@ Plain definitions of terms used in the spec, in alphabetical order.
 
 **Anonymity set.** The group of users among whom you are hidden. Larger is better.
 
+**Asset identifier.** The value inside a note that says which asset it holds. Each external asset maps to one asset identifier on Hash Chain. See [03](03-accounts-and-private-transfers.md) and [10](10-connections.md).
+
 **Atomic swap.** An exchange of two assets where either both transfers complete or neither party can lose funds to the other, without a trusted third party.
 
 **Base.** A network that connects to Hash Chain, alongside Ethereum, Robinhood Chain and Monero. See [10](10-connections.md).
+
+**Batch payout.** One update that pays many recipients, for example payroll or a supplier run. Recipients do not see each other. See [04](04-private-payments.md).
 
 **Commitment.** A public fingerprint of a note that hides its contents.
 
@@ -33,6 +37,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 **Credential.** A signed statement from an issuer about an account, used privately inside proofs to show one fact. See [08](08-proofs-and-view-keys.md).
 
 **Data availability.** The guarantee that the data recipients need, such as encrypted note payloads, can be retrieved. To be specified.
+
+**Disclosure level.** How much a shared proof or view key reveals, from a single payment proof up to a range of incoming and outgoing history. See [08](08-proofs-and-view-keys.md).
 
 **DLEQ proof.** A discrete-logarithm equality proof. Shows two public points on different curves come from the same secret scalar.
 
@@ -60,6 +66,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 
 **Liquidity provider.** An independent actor that fronts funds on a destination network and is repaid later.
 
+**Memo.** A short private message attached to a payment, encrypted to the receiver only. See [04](04-private-payments.md).
+
 **Merkle tree.** A tree of hashes that lets the network prove a commitment is included while storing only a short root.
 
 **Monero.** A privacy-focused network with no smart contracts. It connects to Hash Chain through atomic swaps instead of a connection contract. See [11](11-connection-monero.md).
@@ -69,6 +77,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 **Nullifier.** A one-time value published when a note is spent. Prevents double spends without revealing which note was spent.
 
 **Nullifier key.** The secret used to compute nullifiers for an account's notes. Not derivable from a view key.
+
+**Payment link.** A link that carries a payment request (asset, amount, memo). Whoever opens it pays to a fresh stealth address, so no account address is exposed in advance. See [04](04-private-payments.md).
 
 **Private account.** An account whose balances and history are hidden by default.
 
