@@ -56,6 +56,12 @@ Yes, with a view key. You choose the scope and can revoke it. Revocation stops f
 **How are changes to the design decided?**
 Changes are proposed as HIPs, short documents in a public repository that describe one change and record the objections. A Draft HIP is a proposal and not a decision. See the [hips repository](https://github.com/HashChainL0/hips).
 
+**Who can see what?**
+It depends on who is watching. An observer of public networks sees deposits and withdrawals at the edges, not transfers inside Hash Chain. A validator sees when updates arrive, not their contents. The threat model lists each case, including the ones where the guarantee breaks. See [Threat model](14-threat-model.md).
+
+**What if most validators are dishonest?**
+Privacy of contents does not depend on validator honesty, but safety does. A dishonest majority could finalize invalid history, censor users or sign false messages about connections. The design limits the damage on connections with caps, delays and monitoring, and recovery after such a fault is still to be specified. See [Threat model](14-threat-model.md) and [Security and trust](09-security-and-trust.md).
+
 **Is this for hiding illegal activity?**
 No. The goal is ordinary financial privacy with the option of scoped disclosure. Private, not shady.
 
@@ -75,4 +81,4 @@ For definitions of terms used here, see the [glossary](glossary.md).
 ## Open questions
 
 - Which questions users ask most once the testnet exists, so this page can answer them.
-- Whether a plain-language threat model page is needed in addition to [09](09-security-and-trust.md).
+- Whether the threat model in [14](14-threat-model.md) needs a shorter version for readers who are not technical.
