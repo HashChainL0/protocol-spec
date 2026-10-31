@@ -18,6 +18,8 @@ The spec leaves several design questions open and tracks them as research issues
 
 Numbers 04 and 05 are unused. They were never assigned to a research note.
 
+Note 07 is the background for [HIP-4, shielded fee payment](https://github.com/HashChainL0/hips/blob/main/hips/hip-0004.md). The other notes have no HIP yet.
+
 ## How to read a note
 
 Each note has the same shape:
