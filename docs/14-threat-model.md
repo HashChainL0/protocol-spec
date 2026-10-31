@@ -21,6 +21,19 @@ Each adversary is described by capability, not by identity. "Learns" means infor
 | Swap counterparty | Amounts, timing and Monero-side addresses of that swap | Freeze funds for a time, exploit a careless wallet | Verified locks, bonds, bounded deadlines |
 | Device compromise | Everything on that device, up to its keys | Spend, or read history | Key separation, view keys that cannot spend, recovery guidance |
 
+## Where each party sits
+
+```mermaid
+flowchart LR
+    DEV["Your device<br/>(keys, history)"] -->|"proof + encrypted note"| VAL["Validators<br/>(timing only)"]
+    VAL -->|"finalized"| RCV["Receiver device"]
+    NET["Connected networks<br/>(deposits and withdrawals are public)"] <-->|"signed messages"| VAL
+    OBS["Network observer"] -.->|"sees edges, sizes, timing"| NET
+    OBS -.->|"sees traffic"| DEV
+```
+
+A device compromise exposes everything on that device. Validators see when updates arrive and never see contents. Public networks show deposits and withdrawals at the edges, which is where most linking attacks start.
+
 ## Network observer
 
 A party watching traffic on the internet, on a connected network, or on Hash Chain as a public participant.
