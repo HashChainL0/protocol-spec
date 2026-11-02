@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - [03 Proof system](research/03-proof-system.md): Groth16, PLONK, Halo 2 and STARKs, setup model and a device measurement plan. Addresses #3.
   - [06 Connection verification](research/06-connection-verification.md): event proofs for Ethereum, Base and Robinhood Chain, safety limits and an escape path. Addresses #6.
   - [07 Fees and fee privacy](research/07-fees-and-fee-privacy.md): fee payment patterns and shielded fee payment. Addresses #7.
+  - [08 Association sets](research/08-association-sets.md): optional, mandatory and multi-curator sets for shielded withdrawals. Background for HIP-6.
 - Link to the research notes from the README.
 - Glossary entries: Ethereum, Monero, Robinhood Chain and shape class.
 - FAQ entries on direct corridors for Monero swaps and on how changes are proposed through HIPs.
@@ -22,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Diagram in the threat model of where the device, validators, connected networks and an observer sit, and what each can see.
 - FAQ entries on who can see what and on a dishonest validator majority, linking to the threat model.
 - Glossary entries: asset identifier, batch payout, disclosure level, memo and payment link.
+- Glossary entries: association set and association root.
 - Proposed corridors section in [11](docs/11-connection-monero.md): direct ETH and XMR swaps per connected network, in the proposed order Robinhood Chain, Base, Ethereum, with no bridging step and no dates. Marked as a proposal, with the open question of how it fits the swap contract placement.
 
 ## [0.2.0] - 2026-10-21
