@@ -15,11 +15,11 @@ The spec leaves several design questions open and tracks them as research issues
 | [03 Proof system](03-proof-system.md) | Proof system, setup model, prover cost on consumer devices | [#3](https://github.com/HashChainL0/protocol-spec/issues/3) | [03](../docs/03-accounts-and-private-transfers.md), [08](../docs/08-proofs-and-view-keys.md) |
 | [06 Connection verification](06-connection-verification.md) | How validators verify events on Ethereum, Base and Robinhood Chain | [#6](https://github.com/HashChainL0/protocol-spec/issues/6) | [10](../docs/10-connections.md) |
 | [07 Fees and fee privacy](07-fees-and-fee-privacy.md) | ETH fee model and paying fees without a public payer | [#7](https://github.com/HashChainL0/protocol-spec/issues/7) | [12](../docs/12-fees.md) |
-| [08 Association sets](08-association-sets.md) | How a withdrawal shows its deposit is in a vouched-for set without revealing which one | none yet | [03](../docs/03-accounts-and-private-transfers.md), [08](../docs/08-proofs-and-view-keys.md) |
+| [08 Association sets](08-association-sets.md) | How a withdrawal shows its deposit is in a vouched-for set without revealing which one | [HIP-6](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md) | [03](../docs/03-accounts-and-private-transfers.md), [08](../docs/08-proofs-and-view-keys.md) |
 
 Numbers 04 and 05 are unused. They were never assigned to a research note.
 
-Note 07 is the background for [HIP-4, shielded fee payment](https://github.com/HashChainL0/hips/blob/main/hips/hip-0004.md). The other notes have no HIP yet.
+Note 07 is the background for [HIP-4, shielded fee payment](https://github.com/HashChainL0/hips/blob/main/hips/hip-0004.md) and note 08 for [HIP-6, optional association sets](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md). The other notes have no HIP yet.
 
 ## How to read a note
 
