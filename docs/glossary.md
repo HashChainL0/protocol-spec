@@ -16,9 +16,13 @@ Plain definitions of terms used in the spec, in alphabetical order.
 
 **Asset identifier.** The value inside a note that says which asset it holds. Each external asset maps to one asset identifier on Hash Chain. See [03](03-accounts-and-private-transfers.md) and [10](10-connections.md).
 
+**Association set.** A public list of deposits that a publisher vouches for, committed to as a Merkle root. A withdrawal may prove its deposit is in a set without revealing which one. Optional, proposed in [HIP-6](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md). See [research note 08](../research/08-association-sets.md).
+
 **Atomic swap.** An exchange of two assets where either both transfers complete or neither party can lose funds to the other, without a trusted third party.
 
 **Base.** A network that connects to Hash Chain, alongside Ethereum, Robinhood Chain and Monero. See [10](10-connections.md).
+
+**Association root.** The Merkle root of an association set. The network accepts a root for a bounded window. Proposed, not decided.
 
 **Batch payout.** One update that pays many recipients, for example payroll or a supplier run. Recipients do not see each other. See [04](04-private-payments.md).
 
