@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - FAQ entries on who can see what and on a dishonest validator majority, linking to the threat model.
 - Glossary entries: asset identifier, batch payout, disclosure level, memo and payment link.
 - Glossary entries: association set and association root.
+- Proposed association sets section and open question in [03](docs/03-accounts-and-private-transfers.md), and an FAQ entry, both pointing to HIP-6.
 - Proposed corridors section in [11](docs/11-connection-monero.md): direct ETH and XMR swaps per connected network, in the proposed order Robinhood Chain, Base, Ethereum, with no bridging step and no dates. Marked as a proposal, with the open question of how it fits the swap contract placement.
 
 ## [0.2.0] - 2026-10-21

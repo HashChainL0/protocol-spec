@@ -53,6 +53,9 @@ Depending on when, you may need to come back to refund or sweep. Funds are not m
 **Can I prove my history to an accountant?**
 Yes, with a view key. You choose the scope and can revoke it. Revocation stops future visibility, and data already viewed cannot be unseen. You can also prove single facts with credentials. See [08](08-proofs-and-view-keys.md).
 
+**Can I show my funds did not come from a bad source without revealing my history?**
+Possibly, in future. [HIP-6](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md) proposes optional association sets: a withdrawal could prove its deposit is on a public list someone vouches for, without saying which entry. It is a Draft proposal, not part of the design. See [research note 08](../research/08-association-sets.md).
+
 **How are changes to the design decided?**
 Changes are proposed as HIPs, short documents in a public repository that describe one change and record the objections. A Draft HIP is a proposal and not a decision. See the [hips repository](https://github.com/HashChainL0/hips).
 
