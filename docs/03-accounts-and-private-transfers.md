@@ -113,6 +113,10 @@ The proving system, the circuit-friendly hash, the tree depth and whether a trus
 
 Each output carries an encrypted payload so the receiver can recover the note. Where payloads are stored is a data availability question, see [01](01-architecture.md).
 
+### Association sets (proposed)
+
+A withdrawal from shielded state proves that a valid unspent note exists and nothing else. [HIP-6](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md) proposes an optional addition: a withdrawal may also prove that its deposit is a member of a public association set, without revealing which member. A withdrawal without such a proof stays valid. This is a proposal, not part of the design yet. Background and alternatives are in [research note 08](../research/08-association-sets.md).
+
 ## Open questions
 
 - Proving system choice and trusted setup decision.
@@ -121,3 +125,4 @@ Each output carries an encrypted payload so the receiver can recover the note. W
 - How the account chain structure interacts with the size of the anonymity set.
 - Whether the network supports compliance-friendly features beyond view keys and credentials ([08](08-proofs-and-view-keys.md)).
 - Root history length and its effect on user experience.
+- Whether withdrawals support optional association set proofs, as proposed in [HIP-6](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md).
