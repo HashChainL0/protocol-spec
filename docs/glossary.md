@@ -42,6 +42,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 
 **Data availability.** The guarantee that the data recipients need, such as encrypted note payloads, can be retrieved. To be specified.
 
+**Deposit label.** A value derived from a deposit's commitment that identifies the deposit inside an association set without revealing its owner. Proposed in [HIP-6](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md).
+
 **Disclosure level.** How much a shared proof or view key reveals, from a single payment proof up to a range of incoming and outgoing history. See [08](08-proofs-and-view-keys.md).
 
 **DLEQ proof.** A discrete-logarithm equality proof. Shows two public points on different curves come from the same secret scalar.
@@ -89,6 +91,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 **Prover.** The party that produces a zero-knowledge proof. Usually the user's wallet.
 
 **Receiving key.** A long-lived public key a receiver publishes so senders can derive stealth addresses. See [03](03-accounts-and-private-transfers.md).
+
+**Publisher.** In the association set proposal, a party that maintains an association set and submits its root. A set is a statement about the publisher's list, not about the funds. See [research note 08](../research/08-association-sets.md).
 
 **Revocation.** Ending the usefulness of a view key or credential for future use. It cannot undo what was already seen.
 
