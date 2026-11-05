@@ -33,6 +33,10 @@ flowchart LR
     F --> C["Connected network costs"]
 ```
 
+### Shielded fee payment (proposed)
+
+[HIP-4](https://github.com/HashChainL0/hips/blob/main/hips/hip-0004.md) proposes that each update pays its fee in ETH from the sender's shielded balance, inside the same proof, with the fee set by the update's shape class and the current epoch. There would be no public fee payer and no tip. This is a Draft proposal, not part of the design yet. The options it chose between are in [research note 07](../research/07-fees-and-fee-privacy.md).
+
 ## No token
 
 Validators are paid from fees, in ETH. No new token is needed to use, secure or build on Hash Chain.
@@ -46,6 +50,6 @@ Validators are paid from fees, in ETH. No new token is needed to use, secure or 
 ## Open questions
 
 - Pricing model for each component.
-- Private fee payment without a public payer.
+- Private fee payment without a public payer, as proposed in [HIP-4](https://github.com/HashChainL0/hips/blob/main/hips/hip-0004.md).
 - Subsidies or sponsored fees for apps and merchants.
 - How data availability costs are measured and charged.
