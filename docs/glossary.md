@@ -54,6 +54,8 @@ Plain definitions of terms used in the spec, in alphabetical order.
 
 **Ethereum.** A network that connects to Hash Chain, alongside Base, Robinhood Chain and Monero. See [10](10-connections.md).
 
+**Fee unit.** In the shielded fee payment proposal, the amount of ETH the validator set publishes for each epoch, which a shape class weight multiplies to give an update's fee. Values are to be specified. See [12](12-fees.md).
+
 **Finality.** The point at which an update can no longer be reversed. Hash Chain targets fast, deterministic finality.
 
 **Griefing.** Behavior that costs another party time or locked funds without the attacker gaining the funds.

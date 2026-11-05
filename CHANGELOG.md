@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Glossary entries: deposit label and publisher.
 - FAQ entry on withdrawing without an association proof.
 - Proposed shielded fee payment note in [12](docs/12-fees.md), pointing to HIP-4 and research note 07.
+- Glossary entry: fee unit.
 
 ## [0.2.0] - 2026-10-21
 
