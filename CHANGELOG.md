@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Proposed shielded fee payment note in [12](docs/12-fees.md), pointing to HIP-4 and research note 07.
 - Glossary entry: fee unit.
 - Link from [08](docs/08-proofs-and-view-keys.md) to HIP-2 on scoped view keys.
+- Research README ground rule that a note and the HIP it backs link to each other.
 
 ## [0.2.0] - 2026-10-21
 

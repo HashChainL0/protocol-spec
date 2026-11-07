@@ -35,4 +35,5 @@ Each note has the same shape:
 
 - Figures quoted from other projects are approximate and attributed to the project they come from. They are not Hash Chain benchmarks. Hash Chain has none yet.
 - Prior art is described from public documentation. If a description is wrong, open an issue.
+- A note that leads to a concrete change links the HIP that carries it, and the HIP links back to the note. Today that is note 07 and HIP-4, and note 08 and HIP-6.
 - A note never changes the spec by itself. Spec changes go through a pull request that updates every affected document, see [CONTRIBUTING.md](../CONTRIBUTING.md).
