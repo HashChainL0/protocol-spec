@@ -22,6 +22,8 @@ Scopes are chosen when the key is created:
 
 A view key never grants spending power.
 
+The derivation rules for these scopes are proposed in [HIP-2](https://github.com/HashChainL0/hips/blob/main/hips/hip-0002.md), a Draft. It is a proposal, not part of the design yet.
+
 ## How sharing works
 
 ```mermaid
@@ -175,4 +177,5 @@ Limits, stated plainly. The issuer can link its own issuance records to handles,
 - Optional signed reports so an auditor can attest to what they saw.
 - Revocation root publication schedule, and the cost of non-membership proofs as revoked sets grow.
 - Wallet user experience for choosing scopes without mistakes.
+- Which of the open items above [HIP-2](https://github.com/HashChainL0/hips/blob/main/hips/hip-0002.md) settles, once it moves past Draft.
 - See also the broader list in [14](14-threat-model.md).
