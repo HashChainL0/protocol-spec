@@ -43,6 +43,7 @@ A party watching traffic on the internet, on a connected network, or on Hash Cha
 - **Can do.** Link an entry to an exit when the amount is unusual or the gap in time is short. Link a wallet to its IP if it connects directly.
 - **Mitigations.** Wallet defaults that avoid unique amounts and add delay, uniform-size updates, relays that hide IPs (to be specified), growth of the anonymity set. User advice is in [09](09-security-and-trust.md).
 - **Not solved by the protocol.** IP-level privacy, and any correlation caused by user behavior.
+- **Proposed.** Padding every update to a listed shape class would hide update sizes and keep the fee field from revealing more than the class. See [HIP-4](https://github.com/HashChainL0/hips/blob/main/hips/hip-0004.md), a Draft, and the glossary entry for [shape class](glossary.md).
 
 ## Malicious validator minority
 
