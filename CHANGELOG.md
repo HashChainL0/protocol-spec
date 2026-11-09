@@ -33,6 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Link from [08](docs/08-proofs-and-view-keys.md) to HIP-2 on scoped view keys.
 - Research README ground rule that a note and the HIP it backs link to each other.
 - Note in the network observer section of [14](docs/14-threat-model.md) on shape class padding, pointing to HIP-4.
+- Open question in [14](docs/14-threat-model.md) on whether association sets add a threat model case.
 
 ## [0.2.0] - 2026-10-21
 

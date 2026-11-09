@@ -109,3 +109,4 @@ Malware or physical access on the user's device, or theft of a backup.
 - Recovery process after a dishonest majority event.
 - Relay design for hiding IP addresses of wallets.
 - Review plan: which parts get independent review first.
+- Whether optional association sets, as proposed in [HIP-6](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md), add a case here: a publisher who is wrong or dishonest, and a proof that narrows the anonymity set to the size of the chosen set.
