@@ -30,6 +30,8 @@ flowchart LR
 
 Phases do not start until the previous one is in good shape. Audits come before mainnet. Early mainnet will have limits, and the anonymity set will be small at first ([09](09-security-and-trust.md)).
 
+Design changes that are proposed along the way are tracked as [HIPs](https://github.com/HashChainL0/hips). A Draft HIP is not on the roadmap until it is accepted, and acceptance does not set a date.
+
 ## Technical details
 
 Each phase maps to documents in this spec: accounts and payments ([03](03-accounts-and-private-transfers.md), [04](04-private-payments.md)), swaps ([05](05-private-swaps.md)), connections ([10](10-connections.md), [11](11-connection-monero.md)), assets and apps ([06](06-private-assets.md), [07](07-private-apps.md)).
