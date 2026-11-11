@@ -35,6 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Note in the network observer section of [14](docs/14-threat-model.md) on shape class padding, pointing to HIP-4.
 - Open question in [14](docs/14-threat-model.md) on whether association sets add a threat model case.
 - Note in [13](docs/13-roadmap.md) that Draft HIPs are not on the roadmap until accepted.
+- FAQ entry on who can see the fee payer, pointing to HIP-4.
 
 ## [0.2.0] - 2026-10-21
 

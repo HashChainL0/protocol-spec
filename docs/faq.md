@@ -68,6 +68,9 @@ It depends on who is watching. An observer of public networks sees deposits and 
 **What if most validators are dishonest?**
 Privacy of contents does not depend on validator honesty, but safety does. A dishonest majority could finalize invalid history, censor users or sign false messages about connections. The design limits the damage on connections with caps, delays and monitoring, and recovery after such a fault is still to be specified. See [Threat model](14-threat-model.md) and [Security and trust](09-security-and-trust.md).
 
+**Can anyone see who paid the fee on a private transfer?**
+Not in the proposed design. The fee would be paid from the sender's shielded balance inside the same proof, so there is no public fee payer, and the fee would reveal only a coarse shape class. This is a Draft proposal, not a decision. See [12](12-fees.md) and [HIP-4](https://github.com/HashChainL0/hips/blob/main/hips/hip-0004.md).
+
 **Is this for hiding illegal activity?**
 No. The goal is ordinary financial privacy with the option of scoped disclosure. Private, not shady.
 
