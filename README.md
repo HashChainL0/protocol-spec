@@ -36,7 +36,7 @@ Each document starts with a plain "In short" block, then explains the topic, the
 | [Glossary](docs/glossary.md) | Terms used in the spec |
 | [FAQ](docs/faq.md) | Common questions |
 
-Open design questions are worked through in the [research notes](research/README.md): stake and slashing, consensus and finality, the proof system, connection verification, and fees.
+Open design questions are worked through in the [research notes](research/README.md): stake and slashing, consensus and finality, the proof system, connection verification, fees, and association sets.
 
 Suggested reading order: Overview, Architecture, then the pillar you care about, then Security and trust and the Threat model.
 
@@ -52,6 +52,8 @@ Suggested reading order: Overview, Architecture, then the pillar you care about,
 | A reviewer looking for mistakes | [01 Architecture](docs/01-architecture.md) | [Research notes](research/README.md) and [open HIPs](https://github.com/HashChainL0/hips) |
 
 The Monero swap timelock calculator and state machine live in [xmr-swap-model](https://github.com/HashChainL0/xmr-swap-model).
+
+Concrete changes to the design are proposed in the [HIPs repository](https://github.com/HashChainL0/hips): [HIP-2](https://github.com/HashChainL0/hips/blob/main/hips/hip-0002.md) on scoped view keys, [HIP-4](https://github.com/HashChainL0/hips/blob/main/hips/hip-0004.md) on shielded fee payment and [HIP-6](https://github.com/HashChainL0/hips/blob/main/hips/hip-0006.md) on association sets are examples. All are Drafts.
 
 See the [changelog](CHANGELOG.md) for release history.
 
